@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Currency-Calculator/static/css/main.bffcdfd3.chunk.css",
+    "main.js": "/Currency-Calculator/static/js/main.11f4c43e.chunk.js",
+    "main.js.map": "/Currency-Calculator/static/js/main.11f4c43e.chunk.js.map",
+    "runtime-main.js": "/Currency-Calculator/static/js/runtime-main.5fc9cbb6.js",
+    "runtime-main.js.map": "/Currency-Calculator/static/js/runtime-main.5fc9cbb6.js.map",
+    "static/css/2.4f24714d.chunk.css": "/Currency-Calculator/static/css/2.4f24714d.chunk.css",
+    "static/js/2.c2399724.chunk.js": "/Currency-Calculator/static/js/2.c2399724.chunk.js",
+    "static/js/2.c2399724.chunk.js.map": "/Currency-Calculator/static/js/2.c2399724.chunk.js.map",
+    "index.html": "/Currency-Calculator/index.html",
+    "precache-manifest.59c42cdd1a695d1448b77f3188ff9bce.js": "/Currency-Calculator/precache-manifest.59c42cdd1a695d1448b77f3188ff9bce.js",
+    "service-worker.js": "/Currency-Calculator/service-worker.js",
+    "static/css/2.4f24714d.chunk.css.map": "/Currency-Calculator/static/css/2.4f24714d.chunk.css.map",
+    "static/css/main.bffcdfd3.chunk.css.map": "/Currency-Calculator/static/css/main.bffcdfd3.chunk.css.map",
+    "static/js/2.c2399724.chunk.js.LICENSE.txt": "/Currency-Calculator/static/js/2.c2399724.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/Currency-Calculator/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5fc9cbb6.js",
+    "static/css/2.4f24714d.chunk.css",
+    "static/js/2.c2399724.chunk.js",
+    "static/css/main.bffcdfd3.chunk.css",
+    "static/js/main.11f4c43e.chunk.js"
+  ]
+}
