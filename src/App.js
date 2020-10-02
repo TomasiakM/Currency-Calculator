@@ -11,6 +11,7 @@ function App() {
   const [options, setOptions] = useState([]);
   const [isLoaded, setLoaded] = useState(false);
   const [selectedCurrency, setSelectedCurrency] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     fetch("https://api.nbp.pl/api/exchangerates/tables/A/?format=json")
@@ -29,6 +30,10 @@ function App() {
           setOptions(arr);
           setLoaded(true);
         });
+      })
+      .catch((err) => {
+        setError(true);
+        console.log(err);
       });
   }, []);
 
@@ -37,8 +42,16 @@ function App() {
       <Container text textAlign="center" style={{ margin: 0 }}>
         <div className="header">
           <h1>Kalkulator Walutowy</h1>
+          {error ? (
+            <h3 style={{ color: "red" }}>
+              Wystąpił problem, spróbuj ponownie później.
+            </h3>
+          ) : (
+            ""
+          )}
         </div>
         <Form
+          error={error}
           options={options}
           isLoaded={isLoaded}
           selectedCurrency={selectedCurrency}

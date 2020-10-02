@@ -6,10 +6,12 @@ function Chart({ selectedCurrency }) {
   const [chartDate, setChartDate] = useState([]);
   const [chartExchange, setChartExchange] = useState([]);
   const [isLoadedChars, setLoadedChars] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (selectedCurrency) {
       setLoadedChars(false);
+      setError(false);
       fetch(
         `https://api.nbp.pl/api/exchangerates/rates/A/${selectedCurrency}/last/30/?format=json`
       )
@@ -27,6 +29,10 @@ function Chart({ selectedCurrency }) {
           setChartDate(arrDate);
           setChartExchange(arrExchange);
           setLoadedChars(true);
+        })
+        .catch((err) => {
+          setError(true);
+          console.log(err);
         });
     }
   }, [selectedCurrency]);
@@ -50,21 +56,28 @@ function Chart({ selectedCurrency }) {
     <>
       {selectedCurrency ? (
         isLoadedChars ? (
-          <Line
-            data={lineState}
-            options={{
-              title: {
-                responsive: true,
-                display: true,
-                text: `Historia kursu waluty ${selectedCurrency}`,
-                fontSize: 18,
-                fontColor: "black",
-              },
-              legend: {
-                display: false,
-              },
-            }}
-          />
+          error ? (
+            <p style={{ color: "red" }}>
+              Wystąpił problem z pobraniem historii waluty, spróbuj ponownie
+              później.
+            </p>
+          ) : (
+            <Line
+              data={lineState}
+              options={{
+                title: {
+                  responsive: true,
+                  display: true,
+                  text: `Historia kursu waluty ${selectedCurrency}`,
+                  fontSize: 18,
+                  fontColor: "black",
+                },
+                legend: {
+                  display: false,
+                },
+              }}
+            />
+          )
         ) : (
           <Loader active inline="centered" style={{ marginTop: "20%" }} />
         )

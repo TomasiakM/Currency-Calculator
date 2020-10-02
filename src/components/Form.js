@@ -5,7 +5,13 @@ import "semantic-ui-css/semantic.min.css";
 //Component
 import Inputs from "./Inputs";
 
-function Form({ options, isLoaded, selectedCurrency, setSelectedCurrency }) {
+function Form({
+  error,
+  options,
+  isLoaded,
+  selectedCurrency,
+  setSelectedCurrency,
+}) {
   const [inputValue, setInputValue] = useState(false);
   const [inputExchange, setInputExchange] = useState("");
   const [selectedExchange, setSelectedExchange] = useState(false);
@@ -43,7 +49,7 @@ function Form({ options, isLoaded, selectedCurrency, setSelectedCurrency }) {
               setSelectedCurrency(data.value);
               for (let i = 0; i < options.length; i++) {
                 if (data.value === options[i].value) {
-                  setSelectedExchange(
+                  return setSelectedExchange(
                     Math.round(options[i].exchange * 10000) / 10000
                   );
                 }
@@ -53,7 +59,7 @@ function Form({ options, isLoaded, selectedCurrency, setSelectedCurrency }) {
             selection
             options={options}
             loading={isLoaded ? false : true}
-            disabled={isLoaded ? false : true}
+            disabled={isLoaded && !error ? false : true}
           />
         </div>
         <Inputs
@@ -70,6 +76,7 @@ function Form({ options, isLoaded, selectedCurrency, setSelectedCurrency }) {
             primary
             icon="exchange"
             onClick={btnClick}
+            disabled={error ? true : false}
           />
           <Button icon secondary onClick={changeValueToCalc}>
             <Icon name="arrows alternate vertical" />
